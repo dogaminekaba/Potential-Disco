@@ -49,36 +49,64 @@ protected:
 	void FireWeapon();
 
 public:	
-	// Called every frame
+	/// <summary>
+	/// Called every frame
+	/// </summary>
 	virtual void Tick(float DeltaTime) override;
 
-	// Called to bind functionality to input
+	/// <summary>
+	/// Called to bind functionality to input
+	/// </summary>
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 private:
-	/** Camera boom positioning the camera behind the character */
+
+	/// <summary>
+	/// Camera boom positioning the camera behind the character
+	/// </summary>
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class USpringArmComponent* CameraBoom;
 
-	/** Camera that follows the character */
+	/// <summary>
+	/// Camera that follows the character
+	/// </summary>
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* FollowCamera;
 
-	/** Base turn rate, in deg/sec. Other scaling may affect final turn rate */
+	/// <summary>
+	/// Base turn rate, in deg/sec. Other scaling may affect final turn rate
+	/// </summary>
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	float BaseTurnRate;
 
-	/** Base look up/down rate, in deg/sec. Other scaling may affect final turn rate */
+	/// <summary>
+	/// Base look up/down rate, in deg/sec. Other scaling may affect final turn rate
+	/// </summary>
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	float BaseLookUpRate;
 
+	/// <summary>
+	/// Randomized gunshot sound cue
+	/// </summary>
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Combat, meta = (AllowPrivateAccess = "true"))
 	class USoundCue* FireSound;
 
+	/// <summary>
+	/// Flash spawned at barrel socket
+	/// </summary>
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Combat, meta = (AllowPrivateAccess = "true"))
+	class UParticleSystem* MuzzleFlash;
+
 public:
-	/** Returns CameraBoom subobject */
+
+	/// <summary>
+	/// Returns CameraBoom subobject
+	/// </summary>
 	FORCEINLINE USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
-	/** Returns FollowCamera subobject */
+
+	/// <summary>
+	/// Returns FollowCamera subobject
+	/// </summary>
 	FORCEINLINE UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 
 
