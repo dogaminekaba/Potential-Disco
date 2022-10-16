@@ -44,6 +44,11 @@ protected:
 	void LookUpAtRate(float Rate);
 
 	/// <summary>
+	/// Zoom the camera in or out with mouse scroll
+	/// </summary>
+	void ZoomCamera(float Value);
+
+	/// <summary>
 	/// Called when the fire button is pressed
 	/// </summary>
 	void FireWeapon();
@@ -59,6 +64,12 @@ protected:
 	/// Set bAiming false with button release
 	/// </summary>
 	void AimingButtonReleased();
+
+	/// <summary>
+	/// Handle interpolation for zoom when aiming
+	/// </summary>
+	/// <param name="DeltaTime"></param>
+	void CameraInterpZoom(float DeltaTime);
 
 public:	
 	/// <summary>
@@ -142,6 +153,33 @@ private:
 	/// Field of view value for when zoomed in
 	/// </summary>
 	float CameraZoomedFOV;
+
+	/// <summary>
+	/// Current field of view this frame
+	/// </summary>
+	float CameraCurrentFOV;
+
+	/// <summary>
+	/// Interp speed for zooming when aiming
+	/// </summary>
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Combat, meta = (AllowPrivateAccess = "true"))
+	float ZoomInterpSpeed;
+
+	/// <summary>
+	/// Zooming rate for default camera position
+	/// </summary>
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Combat, meta = (AllowPrivateAccess = "true"))
+	float CameraZoomingRate;
+
+	/// <summary>
+	/// Minimum FOV value of camera
+	/// </summary>
+	float CameraMinFOV;
+
+	/// <summary>
+	/// Maximum FOV value of camera
+	/// </summary>
+	float CameraMaxFOV;
 
 public:
 
